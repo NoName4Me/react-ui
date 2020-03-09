@@ -1,0 +1,41 @@
+import Button from '..';
+import Icon from '../../Icon';
+import { Meta, Story, Preview, Props, Stories } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Button" component={Button} />
+
+# Button
+
+提供基础的按钮组件: <Button size="small" onClick={()=>alert('hi')}>点我 alert</Button>
+
+## 大小
+
+可以通过 `size` 来控制 `Button` 大小，`type` 指定不同的风格：
+
+<Preview>
+  <Story id="story-button--base" />
+</Preview>
+
+## 禁用
+
+`disabeld` 属性控制是否禁用按钮。
+
+<Preview>
+  <Story id="story-button--disable" />
+</Preview>
+
+## 自定义显示内容（如图标）
+
+可以通过自定义内容定制出不同的组件。
+
+<Preview>
+  <Story id="story-button--customize" />
+</Preview>
+
+## 禁用
+
+可以通过 `disabled` 来控制 `Button` 是否禁用
+
+## API
+
+<Props of={Button} />

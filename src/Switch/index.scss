@@ -1,0 +1,73 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Switch;
+
+$height: 24px;
+$width: 48px;
+$borderWidth: 2px;
+
+.#{$prefix} {
+  position: relative;
+  display: inline-flex;
+  height: $height;
+  &__input {
+    display: none;
+    margin: 0;
+    padding: 0;
+    &:checked ~ .#{$prefix}__Slider {
+      background-color: $primaryColor;
+      justify-content: flex-end;
+    }
+    &:disabled ~ .#{$prefix}__Slider {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+  &--round .#{$prefix}__Slider {
+    border-radius: $height / 2;
+    &:before {
+      border-radius: $height - $borderWidth * 2;
+    }
+  }
+
+  &__Slider {
+    width: $width;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: $borderWidth;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    background-color: $hintColor;
+    cursor: pointer;
+    @include transition();
+    &:before {
+      $size: $height - $borderWidth * 2;
+      content: '';
+      display: inline-block;
+      width: $size;
+      height: $size;
+      background: #fff;
+    }
+  }
+  &--small {
+    $width: 36px;
+    $height: $width / 2;
+    $sliderHeight: $height - $borderWidth * 2;
+    width: $width;
+    height: $height;
+    .#{$prefix}__Slider {
+      padding: $borderWidth;
+      &:before {
+        width: $sliderHeight;
+        height: $sliderHeight;
+      }
+    }
+    .#{$prefix}--round .#{$prefix}__Slider {
+      border-radius: $width / 2;
+      &:before {
+        border-radius: $sliderHeight / 2;
+      }
+    }
+  }
+}

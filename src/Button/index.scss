@@ -1,0 +1,118 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Button;
+$fontSize: $Fs-4;
+
+$bgColor: $primaryColor;
+$bgColorLight: $primaryColorLight;
+$color: $antiTextColor;
+
+.#{$prefix} {
+  position: relative;
+  height: 36px;
+  padding: 0 8px;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: $fontSize;
+  color: $color;
+  background-color: $primaryColor;
+  border: none;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  &:disabled {
+    background-color: $hintColor;
+    cursor: not-allowed;
+    &:hover,
+    &:active {
+      background-color: $hintColor;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+  }
+  &:focus {
+    &:after {
+      border: 1px solid $bgColorLight;
+    }
+  }
+  &:hover {
+    background-color: rgba($bgColor, 0.8);
+  }
+  &:active {
+    background-color: $bgColorLight;
+  }
+  &--small {
+    height: 24px;
+    padding: 0 4px;
+  }
+  &--big {
+    height: 48px;
+    padding: 0 16px;
+    font-size: $Fs-3;
+  }
+  &--text {
+    color: $primaryColor;
+    @include unsetBgc();
+    &:hover,
+    &:active {
+      @include unsetBgc();
+    }
+    &:hover {
+      color: $primaryColorLight;
+    }
+
+    &:active {
+      text-shadow: 0 0 0.5px $primaryColorLight;
+      color: $primaryColorLight;
+    }
+    &:focus {
+      &:after {
+        display: none;
+      }
+    }
+    &:disabled {
+      // border-color: $hintColor;
+      color: $hintColor;
+      @include unsetBgc();
+      &:hover,
+      &:active {
+        @include unsetBgc();
+        text-shadow: none;
+      }
+    }
+  }
+  &--frame {
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
+    @include unsetBgc();
+    &:hover,
+    &:active {
+      background-color: rgba($primaryColorLight, 0.1);
+      color: $primaryColorLight;
+    }
+    &:active {
+      background-color: rgba($primaryColorLight, 0.2);
+    }
+    &:focus {
+      &:after {
+        display: none;
+      }
+    }
+    &:disabled {
+      border-color: $hintColor;
+      color: $hintColor;
+      @include unsetBgc();
+      &:hover,
+      &:active {
+        @include unsetBgc();
+      }
+    }
+  }
+}

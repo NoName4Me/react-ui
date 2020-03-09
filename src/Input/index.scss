@@ -1,0 +1,81 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Input;
+$height: 28px;
+$color: $textColor;
+$focusBorderColor: $primaryColorLight;
+
+.#{$prefix} {
+  position: relative;
+  height: $height;
+  width: 100%;
+  display: inline-flex;
+  color: $color;
+  justify-content: flex-end;
+  font-size: $Fs-4;
+  align-items: center;
+  background-color: white;
+  $root: &;
+  &__input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    flex: 1 1 100%;
+    padding: 2px 4px;
+    margin: 0;
+
+    border: 1px solid $borderColor;
+    background: none;
+    @include transition();
+    &:hover {
+      border-color: $hoverBorderColor;
+    }
+    &:focus {
+      border-color: $focusBorderColor;
+      outline: none;
+    }
+
+    &:readonly {
+    }
+    &:disabled {
+      cursor: not-allowed;
+      &:hover,
+      &:focus {
+        border-color: $borderColor;
+      }
+    }
+  }
+  &--underlined &__input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+  }
+  &--noClear &__input {
+    padding-right: 20px;
+  }
+  &__ClearIcon {
+    z-index: 1;
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    @include transition();
+    cursor: pointer;
+    color: rgba($hintColor, 0.5);
+    & ~ #{$root}__input {
+      padding-right: 20px;
+    }
+    &:hover {
+      color: rgba($hintColor, 0.8);
+      & ~ #{$root}__input {
+        border-color: $hoverBorderColor;
+      }
+    }
+    &:active {
+      color: $hintColor;
+    }
+  }
+}

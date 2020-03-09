@@ -1,0 +1,60 @@
+$defaultPrefix: 'Paper';
+
+// font size
+$Fs-1: 24px;
+$Fs-2: 18px;
+$Fs-3: 14px;
+$Fs-4: 12px;
+$Fs-5: 10px;
+
+@mixin headLevel($lv: 2) {
+  font-size: $Fs-2;
+  font-weight: bold;
+}
+
+// color
+$primaryColor: hsl(210, 90%, 50%);
+$primaryBgColor: hsl(210, 90%, 95%);
+$primaryColorLight: hsl(210, 90%, 60%);
+$warnColor: hsl(40, 100%, 50%);
+$warnBgColor: hsl(40, 100%, 95%);
+$errorColor: hsl(0, 90%, 50%);
+$errorBgColor: hsl(0, 90%, 95%);
+$successColor: hsl(120, 70%, 50%);
+$successBgColor: hsl(120, 70%, 95%);
+$hintColor: hsl(220, 1%, 60%);
+$hintBgColor: hsl(220, 1%, 95%);
+$borderColor: hsl(240, 25%, 3%);
+$hoverBorderColor: hsl(220, 80%, 80%);
+$textColor: hsl(220, 0%, 30%);
+$antiTextColor: hsl(220, 100%, 100%);
+
+// transition
+@mixin transition($what: all, $time: 0.2s, $func: ease-in-out) {
+  transition: $what $time $func;
+}
+
+@mixin unsetBgc() {
+  background-color: rgba(0, 0, 0, 0);
+  background-color: unset;
+}
+
+@mixin topBoxShadow($c: rgba($hintColor, 0.3)) {
+  box-shadow: 0 3px 8px $c;
+}
+
+html {
+  color: $textColor;
+  font-size: $Fs-4;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+::placeholder {
+  font-weight: 200;
+  color: rgba($hintColor, 0.6);
+}

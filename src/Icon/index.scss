@@ -1,0 +1,7 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Icon;
+
+.#{$prefix} {
+  position: relative;
+}

@@ -1,0 +1,34 @@
+import RadioGroup, { Radio } from '../index';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Radio" component={RadioGroup} />
+
+# Radio
+
+提供基础的单选框组件。
+
+## 示例
+
+可以通过 `label` 指定 `Radio` 的文字，`RadioGroup` 内包含多个 `Radio` 设置不同选项。当不指定 `name` 属性时会在内部自动添加唯一 `name`。
+
+<Preview>
+  <Story id="story-radio--base" />
+</Preview>
+
+也可以通过 `options` 快速指定子选项，优先级高于内部包含的 `Radio`：
+
+<Preview>
+  <Story id="story-radio--options" />
+</Preview>
+
+## 禁用
+
+通过 `disabled` 属性设置 `Radio` 是否禁用，`RadioGroup` 上设置可以全部禁用，也可以在 `options` 里为某一项设置禁用。
+
+<Preview>
+  <Story id="story-radio--disabled" />
+</Preview>
+
+## API
+
+<Props components={{ RadioGroup: RadioGroup, Radio: Radio }} />

@@ -1,0 +1,108 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Notification;
+$groupPrefix: #{$defaultPrefix}-NotificationGroup;
+
+.#{$prefix} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+  width: 360px;
+  max-height: 360px;
+  border-radius: 2px;
+  overflow: hidden;
+  @include topBoxShadow();
+  background-color: #fff;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    height: 100%;
+    content: '';
+    background-color: white;
+  }
+  &--error {
+    background-color: $errorBgColor;
+    &:before {
+      background-color: $errorColor;
+    }
+  }
+  &--warn {
+    background-color: $warnBgColor;
+    &:before {
+      background-color: $warnColor;
+    }
+  }
+  &--info {
+    background-color: $primaryBgColor;
+    &:before {
+      background-color: $primaryColor;
+    }
+  }
+  &--success {
+    background-color: $successBgColor;
+    &:before {
+      background-color: $successColor;
+    }
+  }
+  &--hint {
+    background-color: $hintBgColor;
+    &:before {
+      background-color: $hintColor;
+    }
+  }
+  &__main {
+    padding: 10px;
+    flex: 1 1 100%;
+  }
+
+  &__title {
+    @include headLevel();
+    padding: 5px;
+  }
+  &__content {
+    padding: 5px;
+  }
+  &__closeBtn {
+    cursor: pointer;
+    flex: 0 0 20px;
+    border-left: 1px solid blue;
+  }
+}
+
+.#{$groupPrefix} {
+  position: fixed;
+  &--left-top,
+  &--left-bottom {
+    left: 1em;
+  }
+  &--right-top,
+  &--right-bottom {
+    right: 1em;
+  }
+  &--left-top,
+  &--right-top,
+  &--center-top {
+    top: 1em;
+  }
+  &--left-bottom,
+  &--right-bottom,
+  &--center-bottom {
+    bottom: 1em;
+  }
+  &--center-top,
+  &--center-bottom {
+    left: 50%;
+    .#{$prefix} {
+      transform: translateX(-50%);
+    }
+  }
+}

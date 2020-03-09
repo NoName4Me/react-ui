@@ -1,0 +1,36 @@
+import Input from '../index';
+import { Meta, Story, Preview, Props, Stories } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Input" component={Input} />
+
+# Input
+
+受控模式的单行文本输入组件。
+
+## 基础示例
+
+通过 `clearable` 控制是否展示右侧的清空按钮，`underlined` 设置为只有底部线条的输入框。
+
+<Preview>
+  <Story id="story-input--base" />
+</Preview>
+
+## 各种状态
+
+通过传入 `disabled`、`readonly` 来控制禁用、只读状态。
+
+<Preview>
+  <Story id="story-input--state" />
+</Preview>
+
+## 自定义后缀
+
+通过传入 `suffix` 自定义设置后缀，该后缀会覆盖清空按钮。
+
+<Preview>
+  <Story id="story-input--suffix" />
+</Preview>
+
+## API
+
+<Props of={Input} />

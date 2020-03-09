@@ -1,0 +1,14 @@
+env:
+  global:
+    - GITHUB_REPO: github.com/NoName4Me/noname4me.github.io.git
+language: node_js
+script:
+  - yarn build-storybook
+after_script:
+  - git clone "https://${GITHUB_TOKEN}@${GITHUB_REPO}"
+  - cd noname4me.github.io
+  - mkdir -p solutions/react-ui
+  - cp -Rf ../storybook-static/* solutions/react-ui/
+  - git add .
+  - git commit -m "update React UI"
+  - git push

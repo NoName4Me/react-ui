@@ -1,0 +1,39 @@
+import Icon from '..';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Icon" component={Icon} />
+
+# Icon
+
+基础图标组件。
+
+## 示例
+
+可以通过 `type`、`size`、`color` 来控制图标类型、大小、颜色。
+
+<Preview>
+  <Story id="story-icon--base" />
+</Preview>
+
+## 自定义
+
+可以添加的事件如 `onClick` 来当做按钮使用，配合 `extraCls` 控制样式。
+
+```css
+/* extraCls 样式 */
+.DiyIconStyle {
+  color: hsl(350, 80%, 80%);
+  transition: all 0.3s ease;
+}
+.DiyIconStyle:hover {
+  color: hsl(350, 90%, 70%);
+}
+```
+
+<Preview>
+  <Icon type="trash" size={24} extraCls="DiyIconStyle" onClick={() => alert('hi')} />
+</Preview>
+
+## API
+
+<Props of={Icon} />

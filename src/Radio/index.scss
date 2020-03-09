@@ -1,0 +1,67 @@
+@import '../common/index.scss';
+
+$groupCmp: #{$defaultPrefix}-RadioGroup;
+$radioCmp: #{$defaultPrefix}-Radio;
+$selctedColor: $primaryColorLight;
+
+// radio group
+.#{$groupCmp} {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+// radio
+.#{$radioCmp} {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  &--disabled {
+    cursor: not-allowed;
+    .#{$radioCmp}__Button:hover {
+      border-color: $borderColor;
+    }
+  }
+  &__input {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &__input:checked ~ &__Button {
+    border-color: $selctedColor;
+    &:after {
+      background-color: $selctedColor;
+    }
+  }
+  &__Button {
+    position: relative;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    border: 1px solid $borderColor;
+    margin-right: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    @include transition();
+    &:hover {
+      border-color: $hoverBorderColor;
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+    }
+  }
+  &__input:disabled:checked {
+    & ~ .#{$radioCmp}__Button {
+      border-color: $borderColor;
+      &:after {
+        background-color: $borderColor;
+      }
+    }
+  }
+}

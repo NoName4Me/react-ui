@@ -1,0 +1,73 @@
+{
+  "name": "react-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:NoName4Me/react-ui.git",
+  "author": "NoName4Me <anich.evas@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest -c scripts/jest/jest.config.js",
+    "test:ui": "jest -c scripts/jest/jest.ui.config.js",
+    "test:cov": "jest --coverage",
+    "format": "pretty-quick",
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx --ignore-pattern 'src/**/stories'",
+    "lint:fix": "yarn lint --fix",
+    "tsc": "tsc -b",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "cz": "./node_modules/cz-customizable/standalone.js"
+  },
+  "lint-staged": {
+    "src/**/*.*": [
+      "npm run format",
+      "git add"
+    ],
+    "src/**/!(*stories).{tsx,js,ts,jsx}": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "clsx": "^1.1.0",
+    "prop-types": "^15.7.2",
+    "react-transition-group": "^4.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-actions": "^5.3.13",
+    "@storybook/addon-docs": "^5.3.13",
+    "@storybook/addon-info": "^5.3.13",
+    "@storybook/addon-links": "^5.3.13",
+    "@storybook/addon-storysource": "^5.3.13",
+    "@storybook/addons": "^5.3.13",
+    "@storybook/preset-typescript": "^1.2.0",
+    "@storybook/react": "^5.3.13",
+    "@types/jest": "^25.1.3",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-transition-group": "^4.2.4",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "jest": "^25.1.0",
+    "jest-image-snapshot": "^2.12.0",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "react": "^16.12.0",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "react-is": "^16.12.0",
+    "rollup": "^1.31.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "ts-jest": "^25.2.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.2"
+  }
+}

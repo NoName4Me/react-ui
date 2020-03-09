@@ -1,0 +1,84 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Checkbox;
+
+$groupCmp: #{$defaultPrefix}-CheckboxGroup;
+$checkboxCmp: #{$defaultPrefix}-Checkbox;
+$selectedColor: $primaryColorLight;
+
+// checkbox group
+.#{$groupCmp} {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+// checkbox
+.#{$checkboxCmp} {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  $btnCls: #{&}__Button;
+  &--disabled {
+    cursor: not-allowed;
+    #{$btnCls}:hover {
+      border-color: $borderColor;
+    }
+  }
+  &__input {
+    position: absolute;
+    display: none;
+    &:checked {
+      & ~ #{$btnCls}:after {
+        display: none;
+      }
+      & ~ #{$btnCls} {
+        background-color: $selectedColor;
+      }
+      &:disabled {
+        & ~ #{$btnCls} {
+          background-color: $borderColor;
+        }
+      }
+    }
+  }
+  &__input--indeterminate {
+    & ~ .#{$checkboxCmp}__Button {
+      &:after {
+        background-color: $selectedColor;
+      }
+    }
+    &:disabled ~ .#{$checkboxCmp}__Button {
+      border-color: $borderColor;
+      &:after {
+        background-color: $borderColor;
+      }
+    }
+  }
+  &__Button {
+    position: relative;
+    height: 16px;
+    width: 16px;
+    border: 1px solid $borderColor;
+    margin-right: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    @include transition();
+    &:hover {
+      border-color: $hoverBorderColor;
+    }
+    &:after {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      position: absolute;
+    }
+    &--checked {
+      color: white;
+      position: absolute;
+    }
+  }
+}
