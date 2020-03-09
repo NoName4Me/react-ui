@@ -2,6 +2,8 @@ env:
   global:
     - GITHUB_REPO: github.com/NoName4Me/noname4me.github.io.git
 language: node_js
+node_js:
+  - 12
 script:
   - yarn build-storybook
 after_script:
