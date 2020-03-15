@@ -11,10 +11,12 @@ import ChevronUp from './ChevronUp';
 import ChevronDown from './ChevronDown';
 import Search from './Search';
 import Check from './Check';
+import Times from './Times';
 
 const mapper: { [key: string]: typeof Save } = {
   save: Save,
   close: Close,
+  times: Times,
   trash: Trash,
   'chevron-up': ChevronUp,
   'chevron-down': ChevronDown,
@@ -35,6 +37,13 @@ interface IconProps extends BaseProps {
   [key: string]: any;
 }
 
+const resetViewBox = (type: string) => {
+  if (type === 'times') {
+    return '0 0 320 512';
+  }
+  return '0 0 512 512';
+};
+
 function Icon(props: IconProps) {
   const { type, size, color, clsPrefix, extraCls, style, ...rest } = props;
   const IconPath = mapper[type];
@@ -49,7 +58,7 @@ function Icon(props: IconProps) {
       focusable="false"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
+      viewBox={resetViewBox(type)}
     >
       <IconPath />
     </svg>

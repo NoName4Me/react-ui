@@ -8,7 +8,7 @@
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
-    "declaration": true /* 生成对应的 '.d.ts' 文件 */,
+    // "declaration": true /* 生成对应的 '.d.ts' 文件 */,
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     "sourceMap": true /* Generates corresponding '.map' file. */,
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
@@ -64,5 +64,5 @@
   //   "."
   // ]
   "include": ["src/**/*", "gen.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/__test__", "**/stories"]
 }

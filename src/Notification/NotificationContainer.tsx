@@ -42,8 +42,17 @@ const defaultConfig = {
   placement: Placement.RIGHT_TOP,
   showDuration: 3000,
   type: 'info',
-  closable: false,
-  autoDismiss: true,
+  showClose: false,
+};
+
+const getDefaultDuration = (type: string) => {
+  if (type === 'error') {
+    return 10000;
+  }
+  if (type === 'warn') {
+    return 10000;
+  }
+  return 3000;
 };
 
 function normalizePayload(config: string | NoticeProps) {
@@ -54,7 +63,9 @@ function normalizePayload(config: string | NoticeProps) {
     result = config;
   }
   const id = Date.now() + '' + Math.random();
-  return { ...defaultConfig, id, ...result };
+  const showDuration = !result.showDuration && !result.showClose ? getDefaultDuration(result.type || 'info') : null;
+  const fullConfig = { ...defaultConfig, id, ...result };
+  return fullConfig;
 }
 
 function NotificationContainer(props: any, ref: React.Ref<NotificationApi>) {

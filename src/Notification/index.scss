@@ -30,24 +30,28 @@ $groupPrefix: #{$defaultPrefix}-NotificationGroup;
     background-color: white;
   }
   &--error {
+    color: $errorTextColor;
     background-color: $errorBgColor;
     &:before {
       background-color: $errorColor;
     }
   }
   &--warn {
+    color: $warnTextColor;
     background-color: $warnBgColor;
     &:before {
       background-color: $warnColor;
     }
   }
   &--info {
+    color: $primaryTextColor;
     background-color: $primaryBgColor;
     &:before {
       background-color: $primaryColor;
     }
   }
   &--success {
+    color: $successTextColor;
     background-color: $successBgColor;
     &:before {
       background-color: $successColor;
@@ -73,13 +77,17 @@ $groupPrefix: #{$defaultPrefix}-NotificationGroup;
   }
   &__closeBtn {
     cursor: pointer;
-    flex: 0 0 20px;
-    border-left: 1px solid blue;
+    flex: 0 0 32px;
+    color: $hintColor;
+    &:hover {
+      color: inherit;
+    }
   }
 }
 
 .#{$groupPrefix} {
   position: fixed;
+  z-index: $notifyZIndex;
   &--left-top,
   &--left-bottom {
     left: 1em;

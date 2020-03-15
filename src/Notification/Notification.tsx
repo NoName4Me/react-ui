@@ -12,8 +12,11 @@ export interface NoticeProps {
   type: NotificationType;
   title?: string;
   content?: ReactElement | string;
+  /** 展示时间，error 10s, warn 8s, 其它 3s*/
   showDuration?: number;
-  closable?: boolean;
+  /** 是否显示关闭按钮 */
+  showClose?: boolean;
+  /** 是否自动销毁，当 showClose 为 true 时，默认为 false，除非显示指定 */
   autoDismiss?: boolean;
 }
 interface NotificationProps extends BaseProps, NoticeProps {
@@ -33,15 +36,15 @@ function Notification(props: NotificationProps) {
     animateState,
     autoDismiss,
     showDuration,
-    closable,
+    showClose,
     children,
     clsPrefix,
     ...rest
   } = props;
   const timer = useRef(-1);
   useEffect(() => {
-    if (autoDismiss && animateState === 'entered') {
-      timer.current = setTimeout(() => {
+    if (showDuration && animateState === 'entered') {
+      timer.current = window.setTimeout(() => {
         onRemove && onRemove(id);
       }, showDuration);
     }
@@ -62,7 +65,7 @@ function Notification(props: NotificationProps) {
         {title && <div className={bem(cmpCls, 'title')}>{title}</div>}
         {(children || content) && <div className={bem(cmpCls, 'content')}>{children ? children : content}</div>}
       </div>
-      {closable && <Icon extraCls={bem(cmpCls, 'closeBtn')} type="close" onClick={handleClose} />}
+      {showClose && <Icon extraCls={bem(cmpCls, 'closeBtn')} size={18} type="times" onClick={handleClose} />}
     </div>
   );
 }
@@ -70,7 +73,9 @@ function Notification(props: NotificationProps) {
 Notification.propTypes = {
   ...basePropsType,
   type: PropTypes.oneOf(types),
-  closable: PropTypes.bool,
+  showClose: PropTypes.bool,
+  autoDismiss: PropTypes.bool,
+  showDuration: PropTypes.number,
   title: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
@@ -78,7 +83,7 @@ Notification.propTypes = {
 Notification.defaultProps = {
   ...baseDefaultProps,
   type: 'info',
-  closable: false,
+  showClose: false,
 };
 
 export default Notification;

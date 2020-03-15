@@ -32,7 +32,7 @@ const LabelBox = ({ type, children }: any) => {
 export const base = () => {
   return (
     <>
-      {['trash', 'save', 'close', 'search', 'check', 'chevron-down', 'chevron-up', 'close'].map((type, idx) => (
+      {['trash', 'save', 'close', 'search', 'check', 'chevron-down', 'chevron-up', 'times'].map((type, idx) => (
         <LabelBox key={idx} type={type}>
           <Icon type={type} size={24} />
         </LabelBox>

@@ -15,7 +15,7 @@ export const base = () => {
           <Notification
             key={type}
             style={{ marginTop: '10px' }}
-            closable={idx % 2 === 0}
+            showClose={idx % 2 === 0}
             type={type as NotificationType}
             title={type}
           >
@@ -51,7 +51,7 @@ export const api = () => {
                   title: placement,
                   placement,
                   content: `A notification @${placement}: ${Date.now()}`,
-                  autoDismiss: false,
+                  showClose: true,
                 })
               }
             >

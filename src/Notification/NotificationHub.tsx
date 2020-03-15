@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import ReactDOM from 'react-dom';
 import NotificationContainer from './NotificationContainer';
+import { NotificationType } from './Notification';
 
 export interface NoticeProps {
   id?: string;
@@ -8,6 +9,8 @@ export interface NoticeProps {
   placement?: string;
   showDuration?: number;
   animateDuration?: number;
+  showClose?: boolean;
+  type?: NotificationType;
 }
 
 export interface NoticeFullProps extends NoticeProps {
