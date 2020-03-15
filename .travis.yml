@@ -16,6 +16,7 @@ after_script:
   - git push
 deploy:
   provider: npm
+  email: "anich.evas@gmail.com"
   api_key: "${NPM_TOKEN}"
   on:
     tags: true
