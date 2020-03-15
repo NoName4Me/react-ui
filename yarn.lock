@@ -1995,6 +1995,11 @@
   dependencies:
     core-js "^3.0.1"
 
+"@storybook/preset-scss@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@storybook/preset-scss/-/preset-scss-1.0.2.tgz#6c993b972c6f599237082b55e12c875f0f66ab06"
+  integrity sha512-Kq+Y3H7qRBxocLW57V9HtQhrw9ZzmTodFCjf+OelMh1k6SZ7/FvJHb7mtWofafHcqq1tSQlNIgYMtHRDJ64WVg==
+
 "@storybook/preset-typescript@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@storybook/preset-typescript/-/preset-typescript-2.1.0.tgz#9bec5ae7ef3641131bceda01012a55d4f06acd24"

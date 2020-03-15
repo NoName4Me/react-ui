@@ -64,5 +64,5 @@
   //   "."
   // ]
   "include": ["src/**/*", "gen.js"],
-  "exclude": ["node_modules", "**/__test__", "**/stories"]
+  "exclude": ["node_modules", "src/**/__test__", "src/**/stories"]
 }
