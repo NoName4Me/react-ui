@@ -4,7 +4,7 @@ $prefix: #{$defaultPrefix}-Checkbox;
 
 $groupCmp: #{$defaultPrefix}-CheckboxGroup;
 $checkboxCmp: #{$defaultPrefix}-Checkbox;
-$selectedColor: $primaryColorLight;
+$selectedColor: $primaryColor;
 
 // checkbox group
 .#{$groupCmp} {
@@ -20,6 +20,7 @@ $selectedColor: $primaryColorLight;
   align-items: center;
   cursor: pointer;
   $btnCls: #{&}__Button;
+  color: $textColor;
   &--disabled {
     cursor: not-allowed;
     #{$btnCls}:hover {
@@ -34,10 +35,12 @@ $selectedColor: $primaryColorLight;
         display: none;
       }
       & ~ #{$btnCls} {
+        border-color: $selectedColor;
         background-color: $selectedColor;
       }
       &:disabled {
         & ~ #{$btnCls} {
+          border-color: $borderColor;
           background-color: $borderColor;
         }
       }
@@ -77,7 +80,7 @@ $selectedColor: $primaryColorLight;
       position: absolute;
     }
     &--checked {
-      color: white;
+      color: $backgroundColor;
       position: absolute;
     }
   }

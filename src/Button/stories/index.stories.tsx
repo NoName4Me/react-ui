@@ -6,28 +6,38 @@ export default {
   title: 'Story|Button',
 };
 
+const Group = ({ children }) => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '500px', margin: '10px' }}>{children}</div>
+  );
+};
+
 export const base = () => {
   return (
     <>
-      <Button size="big">大号按钮</Button>
-      <Button size="big" type="frame">
-        大号按钮
-      </Button>
-      <Button size="big" type="text">
-        大号按钮
-      </Button>
-
-      <Button>普通按钮</Button>
-      <Button type="frame">普通按钮</Button>
-      <Button type="text">普通按钮</Button>
-
-      <Button size="small">小号按钮</Button>
-      <Button size="small" type="frame">
-        小号按钮
-      </Button>
-      <Button size="small" type="text">
-        小号按钮
-      </Button>
+      <Group>
+        <Button size="big">大号主要按钮</Button>
+        <Button size="big" type="frame">
+          大号次要按钮
+        </Button>
+        <Button size="big" type="text">
+          大号文字按钮
+        </Button>
+      </Group>
+      <Group>
+        <Button>普通主要按钮</Button>
+        <Button type="frame">普通次要按钮</Button>
+        <Button type="text">普通文字按钮</Button>
+      </Group>
+      <Group>
+        <Button size="small">小号主要按钮</Button>
+        <Button size="small" type="frame">
+          小号次要按钮
+        </Button>
+        <Button size="small" type="text">
+          小号文字按钮
+        </Button>
+      </Group>
     </>
   );
 };
@@ -37,15 +47,15 @@ base.story = {
 
 export const disable = () => {
   return (
-    <>
-      <Button disabled>普通按钮</Button>
+    <Group>
+      <Button disabled>主要按钮</Button>
       <Button disabled type="frame">
-        普通按钮
+        次要按钮
       </Button>
       <Button disabled type="text">
-        普通按钮
+        文字按钮
       </Button>
-    </>
+    </Group>
   );
 };
 disable.story = {

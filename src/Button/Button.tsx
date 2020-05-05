@@ -1,4 +1,4 @@
-import React, { MouseEvent, FunctionComponent as FC } from 'react';
+import React, { MouseEvent, FunctionComponent as FC, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { baseDefaultProps, basePropsType } from '../common';
 import { BaseProps } from '../common/BaseProps';
@@ -7,23 +7,26 @@ import './index.scss';
 import { bem } from '../utils';
 
 interface ButtonProps extends BaseProps {
-  /** 大小 */
   size?: 'normal' | 'big' | 'small';
-  /** 类型 */
   type?: 'fill' | 'text' | 'frame';
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-  /** 是否禁用 */
+  onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (event: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = props => {
+const Button: FC<ButtonProps> = (props) => {
   const { size, type, onClick, extraCls, clsPrefix, disabled, children, ...rest } = props;
   const buttonCls = `${clsPrefix}-Button`;
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.blur();
+    onClick && onClick(event);
+  };
   return (
     <button
       disabled={disabled}
       className={clsx(buttonCls, bem(buttonCls, '', [size, type]), extraCls)}
-      onClick={onClick}
+      onClick={handleClick}
       {...rest}
     >
       {children}
@@ -33,9 +36,14 @@ const Button: FC<ButtonProps> = props => {
 
 Button.propTypes = {
   ...basePropsType,
+  /** 大小 */
   size: PropTypes.oneOf(['normal', 'big', 'small']),
+  /** 类型 */
   type: PropTypes.oneOf(['fill', 'text', 'frame']),
+  /** 点击事件 */
   onClick: PropTypes.func,
+  /** 是否禁用 */
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {

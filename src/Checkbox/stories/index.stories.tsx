@@ -6,10 +6,7 @@ export default {
 };
 
 export const base = () => {
-  const handleChange = (e: any) => {
-    console.log(e.target.checked, e.target.value);
-  };
-  return <Checkbox label="a checkbox" checked value="hi" onChange={handleChange} />;
+  return <Checkbox label="a checkbox" checked value="hi" />;
 };
 
 base.story = {
@@ -23,7 +20,7 @@ export const state = () => {
   return (
     <>
       <DemoItem>
-        <Checkbox label="未选" />
+        <Checkbox label="未选" checked={false} />
         <Checkbox label="未选禁用" disabled />
       </DemoItem>
       <DemoItem>
@@ -31,7 +28,7 @@ export const state = () => {
         <Checkbox label="已选禁用" checked disabled />
       </DemoItem>
       <DemoItem>
-        <Checkbox label="部分选择" indeterminate />
+        <Checkbox label="部分选择" indeterminate checked={false} />
         <Checkbox label="部分选择禁用" indeterminate disabled />
       </DemoItem>
     </>
@@ -58,8 +55,8 @@ export const group = () => {
         label="全选"
         indeterminate={indeterminate}
         checked={selected.length === options.length}
-        onChange={checked => {
-          setSelected(checked ? options.map(item => item.value) : []);
+        onChange={(checked) => {
+          setSelected(checked ? options.map((item) => item.value) : []);
           setIndeterminate(false);
         }}
       />

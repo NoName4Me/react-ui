@@ -1,0 +1,34 @@
+import Modal from '..';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Modal" component={Modal} />
+
+# Modal
+
+弹窗组件。
+
+## 基础示例
+
+一个基础的示例：
+
+<Preview>
+  <Story id="story-modal--base" />
+</Preview>
+
+## 关闭方式
+
+<Preview>
+  <Story id="story-modal--close" />
+</Preview>
+
+## 可拖拽
+
+`draggable` 属性控制弹窗是否可拖拽。
+
+<Preview>
+  <Story id="story-modal--draggable" />
+</Preview>
+
+## API
+
+<Props of={Modal} />

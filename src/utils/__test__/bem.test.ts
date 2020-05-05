@@ -1,6 +1,6 @@
 import { bem } from '../index';
 
-describe('工具方法测试', () => {
+describe('bem 工具方法测试', () => {
   test('bem', () => {
     expect(bem('b', undefined, '')).toBe('b');
     expect(bem('b', undefined, undefined)).toBe('b');

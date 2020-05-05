@@ -2,7 +2,7 @@ module.exports = {
   rootDir: '../..',
   preset: 'ts-jest',
   // snapshotSerializers: ['enzyme-to-json/serializer'],
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   transform: {
     // 用 ts-jest 将 tsx 文件编译成 js
     '^.+\\.tsx?$': 'ts-jest',

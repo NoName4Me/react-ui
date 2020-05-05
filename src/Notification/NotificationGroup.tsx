@@ -2,23 +2,22 @@ import React, { useEffect, useReducer, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import Notification from './Notification';
-import { NoticeProps, NoticeFullProps } from './NotificationHub';
 import { bem } from '../utils';
 import './index.scss';
 import { BaseProps, baseDefaultProps } from '../common';
 import clsx from 'clsx';
-import { ActionProps, Action, Placement } from './NotificationContainer';
+import { ActionProps, Action, Placement, NoticeFullProps } from './NotificationContainer';
 import { TransitionStatus } from 'react-transition-group/Transition';
 
-const opacityStyles = {
+const opacityMaxHeightStyles = {
   entering: { opacity: '1' },
   entered: { opacity: '1' },
-  exiting: { opacity: '0', maxHeight: '0', overflow: 'hidden' }, //
-  exited: { opacity: '0' },
+  exiting: { opacity: '0.5', maxHeight: '0', overflow: 'hidden' }, //
+  exited: { opacity: '0.5' },
 };
 
 function getAnimateStyle(state: TransitionStatus, placement: string) {
-  const opacityStyle = opacityStyles[state as keyof typeof opacityStyles];
+  const opacityMaxHeightStyle = opacityMaxHeightStyles[state as keyof typeof opacityMaxHeightStyles];
   let transform = '';
   if (state === 'entering') {
     const pos = placement.split('-');
@@ -33,16 +32,15 @@ function getAnimateStyle(state: TransitionStatus, placement: string) {
   }
   return {
     transform,
-    ...opacityStyle,
+    ...opacityMaxHeightStyle,
   };
 }
 interface NotificationGroupProps extends BaseProps {
   placement: string;
-  notices: NoticeProps[];
-  // onRemove:Function;
+  notices: NoticeFullProps[];
   dispatch: React.Dispatch<ActionProps>;
 }
-
+const animateDuration = 200;
 function NotificationGroup({ placement, notices, dispatch, clsPrefix }: NotificationGroupProps) {
   const handleRemove = useMemo(
     () => (id: string) => {
@@ -54,7 +52,7 @@ function NotificationGroup({ placement, notices, dispatch, clsPrefix }: Notifica
 
   return (
     <TransitionGroup appear className={clsx(cmpCls, bem(cmpCls, '', placement))}>
-      {notices.map(({ id, animateDuration = 200, ...rest }) => {
+      {notices.map(({ id, ...rest }) => {
         return (
           <Transition
             timeout={{ enter: animateDuration, exit: animateDuration * 2 }}
@@ -62,13 +60,14 @@ function NotificationGroup({ placement, notices, dispatch, clsPrefix }: Notifica
             mountOnEnter
             unmountOnExit
           >
-            {animateState => (
+            {(animateState) => (
               <Notification
                 {...rest}
                 id={id}
                 style={{
-                  transition: `transform ${animateDuration}ms ease, opacity ${animateDuration *
-                    2}ms linear, max-height ${animateDuration * 2}ms linear`,
+                  transition: `transform ${animateDuration}ms ease, opacity ${
+                    animateDuration * 2
+                  }ms linear, max-height ${animateDuration * 2}ms linear`,
                   ...getAnimateStyle(animateState, placement),
                 }}
                 onRemove={handleRemove}

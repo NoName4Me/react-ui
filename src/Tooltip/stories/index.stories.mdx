@@ -1,0 +1,44 @@
+import Tooltip from '../index';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Tooltip" component={Tooltip} />
+
+# Tooltip
+
+提供基础的悬浮提示框组件。
+
+## 基础示例
+
+一共支持 12 种方位的展示形式，通过 `placement` 属性控制，默认为 `'top'`，即顶部居中。
+
+<Preview>
+  <Story id="story-tooltip--base" />
+</Preview>
+
+## 显示箭头
+
+属性 `isShowArrow` 可以用来控制是否显示箭头。
+
+<Preview>
+  <Story id="story-tooltip--arrow" />
+</Preview>
+
+## 可交互
+
+设置 `interactive` 属性，可以 hover 在 tooltip 上，tooltip 不会消失，直到鼠标离开 tooltip，可以通过 `delayLeave` 调节鼠标离开元素多久后销毁 tooltip。
+
+<Preview>
+  <Story id="story-tooltip--interactive" />
+</Preview>
+
+## 默认最大宽度、折行
+
+默认最大宽度 400px，超过时会折行显示。
+
+<Preview>
+  <Story id="story-tooltip--max-width" />
+</Preview>
+
+## API
+
+<Props components={{ Tooltip: Tooltip }} />

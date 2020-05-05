@@ -14,9 +14,3 @@ after_script:
   - git add .
   - git commit -m "update React UI"
   - git push
-deploy:
-  provider: npm
-  email: "anich.evas@gmail.com"
-  api_key: "${NPM_TOKEN}"
-  on:
-    tags: true

@@ -1,0 +1,33 @@
+import CustomTransition, { Fade, Scale } from '../index';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Transition" component={CustomTransition} />
+
+# Transition
+
+提供基础的过渡动画组件，基于 [react-transition-group#Transition](http://reactcommunity.org/react-transition-group/transition) 封装。
+
+## 基础示例
+
+提供两个基本的过渡组件：透明度 `Fade` 和缩放 `Scale` ：
+
+<Preview>
+  <Story id="story-transition--fade" />
+</Preview>
+
+<Preview>
+  <Story id="story-transition--scale" />
+</Preview>
+
+## 自定义渐变
+
+下面的示例使用了 渐隐 + scaleY 的过渡：
+
+<Preview>
+  <Story id="story-transition--custom" />
+</Preview>
+
+
+## API
+
+<Props components={{ CustomTransition: CustomTransition, Fade,Scale }} />

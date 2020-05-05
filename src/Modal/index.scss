@@ -1,0 +1,58 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Modal;
+
+.#{$prefix} {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $dialogZIndex;
+}
+.#{$prefix}__Mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+.#{$prefix}__Content {
+  position: relative;
+  background-color: $backgroundColor;
+  @include dialogShadow();
+  max-width: 600px;
+  width: 80%;
+  border: 1px solid $borderColor;
+  .#{$prefix}__Header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--draggable {
+      cursor: move;
+    }
+  }
+  .#{$prefix}__Close {
+    color: $hintColor;
+    &:hover {
+      color: $errorColor;
+    }
+  }
+  .#{$prefix}__Body {
+    padding: 10px 20px;
+  }
+  .#{$prefix}__Footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    & > * {
+      margin-left: 10px;
+    }
+  }
+}

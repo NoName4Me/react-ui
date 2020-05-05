@@ -1,26 +1,36 @@
 @import '../common/index.scss';
 
 $prefix: #{$defaultPrefix}-Button;
-$fontSize: $Fs-4;
 
-$bgColor: $primaryColor;
 $bgColorLight: $primaryColorLight;
 $color: $antiTextColor;
+$clipPath: polygon(20% 0, 100% 0, 100% 40%, 80% 100%, 0 100%, 0 60%);
 
 .#{$prefix} {
   position: relative;
-  height: 36px;
-  padding: 0 8px;
+  padding: 6px 20px;
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  font-size: $fontSize;
+  font-size: $fontSize-normal;
   color: $color;
-  background-color: $primaryColor;
   border: none;
   outline: none;
-  transition: 0.2s ease-in-out;
+  border-radius: 1px;
+  clip-path: $clipPath;
+  &:before {
+    // content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: linear-gradient(-60deg, transparent 0%, $primaryColor 50%, transparent 100%);
+    background: linear-gradient(-60deg, transparent 0%, $primaryColor 10%, $primaryColor 90%, transparent 100%);
+  }
+
   &:disabled {
     background-color: $hintColor;
     cursor: not-allowed;
@@ -29,48 +39,29 @@ $color: $antiTextColor;
       background-color: $hintColor;
     }
   }
-  &:after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-  }
   &:focus {
-    &:after {
-      border: 1px solid $bgColorLight;
+    &:before {
+      animation: radar 1s ease-in-out infinite alternate-reverse;
     }
   }
-  &:hover {
-    background-color: rgba($bgColor, 0.8);
-  }
-  &:active {
-    background-color: $bgColorLight;
-  }
   &--small {
-    height: 24px;
-    padding: 0 4px;
+    padding: 4px 16px;
+    font-size: $fontSize-small;
+    border-radius: 0;
   }
   &--big {
-    height: 48px;
-    padding: 0 16px;
-    font-size: $Fs-3;
+    padding: 10px 30px;
+    font-size: $fontSize-big;
+    border-radius: 2px;
   }
   &--text {
     color: $primaryColor;
     @include unsetBgc();
-    &:hover,
-    &:active {
-      @include unsetBgc();
-    }
     &:hover {
-      color: $primaryColorLight;
+      background-color: rgba($primaryColor, 0.1);
     }
-
     &:active {
-      text-shadow: 0 0 0.5px $primaryColorLight;
-      color: $primaryColorLight;
+      background-color: rgba($primaryColor, 0.2);
     }
     &:focus {
       &:after {
@@ -88,31 +79,58 @@ $color: $antiTextColor;
       }
     }
   }
+  &--fill {
+    color: $backgroundColor;
+    background-color: $primaryColor;
+    &:hover {
+      background-color: rgba($primaryColor, 0.9);
+    }
+    &:active {
+      background-color: rgba($primaryColor, 0.8);
+    }
+  }
   &--frame {
     color: $primaryColor;
-    border: 1px solid $primaryColor;
-    @include unsetBgc();
-    &:hover,
-    &:active {
-      background-color: rgba($primaryColorLight, 0.1);
-      color: $primaryColorLight;
+    background-color: $primaryColor;
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      $size: 1px;
+      top: $size;
+      left: $size;
+      right: $size;
+      bottom: $size;
+      clip-path: $clipPath;
+      background-color: $backgroundColor;
     }
-    &:active {
-      background-color: rgba($primaryColorLight, 0.2);
-    }
-    &:focus {
+    &:hover {
       &:after {
-        display: none;
+        background-color: rgba($backgroundColor, 0.8);
+      }
+    }
+    &:active {
+      &:after {
+        background-color: rgba($backgroundColor, 0.7);
       }
     }
     &:disabled {
-      border-color: $hintColor;
       color: $hintColor;
-      @include unsetBgc();
-      &:hover,
-      &:active {
-        @include unsetBgc();
+      background-color: $hintColor;
+      &:hover {
+        &:after {
+          background-color: $backgroundColor;
+        }
       }
     }
+  }
+}
+
+@keyframes radar {
+  from {
+    transform: scaleX(0.8);
+  }
+  to {
+    transform: scaleY(1);
   }
 }

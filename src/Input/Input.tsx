@@ -26,7 +26,19 @@ interface InputProps extends BaseInputProps {
  *
  */
 function Input(props: InputProps) {
-  const { suffix, readonly, disabled, clearable, underlined, clsPrefix, onChange, value, placeholder, ...rest } = props;
+  const {
+    suffix,
+    readonly,
+    disabled,
+    clearable,
+    underlined,
+    clsPrefix,
+    extraCls,
+    onChange,
+    value,
+    placeholder,
+    ...rest
+  } = props;
   const cmpCls = `${clsPrefix}-Input`;
   const notShowClearIcon = !clearable || disabled || readonly || isEmptyValue(value);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,10 +47,15 @@ function Input(props: InputProps) {
 
   const suffixEl =
     suffix ||
-    (!notShowClearIcon && <Icon onClick={() => onChange('')} type="close" extraCls={`${cmpCls}__ClearIcon`} />);
+    (!notShowClearIcon && (
+      <Icon onClick={() => onChange('')} size={12} type="close" extraCls={`${cmpCls}__ClearIcon`} />
+    ));
 
   return (
-    <div {...rest} className={clsx(cmpCls, !clearable && `${cmpCls}--noClear`, underlined && `${cmpCls}--underlined`)}>
+    <div
+      {...rest}
+      className={clsx(cmpCls, extraCls, suffixEl && `${cmpCls}--hasSuffix`, underlined && `${cmpCls}--underlined`)}
+    >
       {suffixEl}
       <input
         value={value}

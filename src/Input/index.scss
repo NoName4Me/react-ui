@@ -14,7 +14,7 @@ $focusBorderColor: $primaryColorLight;
   justify-content: flex-end;
   font-size: $Fs-4;
   align-items: center;
-  background-color: white;
+  background-color: $backgroundColor;
   $root: &;
   &__input {
     position: absolute;
@@ -54,7 +54,7 @@ $focusBorderColor: $primaryColorLight;
     border-right: none;
     border-left: none;
   }
-  &--noClear &__input {
+  &--hasSuffix &__input {
     padding-right: 20px;
   }
   &__ClearIcon {
@@ -65,9 +65,7 @@ $focusBorderColor: $primaryColorLight;
     @include transition();
     cursor: pointer;
     color: rgba($hintColor, 0.5);
-    & ~ #{$root}__input {
-      padding-right: 20px;
-    }
+
     &:hover {
       color: rgba($hintColor, 0.8);
       & ~ #{$root}__input {

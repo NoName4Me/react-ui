@@ -1,6 +1,6 @@
-import React, { ReactElement, useEffect, createRef, useRef } from 'react';
+import React, { ReactElement, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { BaseProps, baseDefaultProps, basePropsType } from '../common';
+import { BaseProps, baseDefaultProps, basePropsType, NOOP } from '../common';
 import './index.scss';
 import Icon from '../Icon';
 import { bem } from '../utils';
@@ -9,54 +9,54 @@ import clsx from 'clsx';
 const types = ['error', 'warn', 'success', 'info', 'hint', 'plain'] as const;
 export type NotificationType = typeof types[number];
 export interface NoticeProps {
-  type: NotificationType;
+  type?: NotificationType;
   title?: string;
   content?: ReactElement | string;
-  /** 展示时间，error 10s, warn 8s, 其它 3s*/
-  showDuration?: number;
+  /** 展示时间，error 10s, warn 8s, 其它 3s */
+  duration?: number;
   /** 是否显示关闭按钮 */
   showClose?: boolean;
-  /** 是否自动销毁，当 showClose 为 true 时，默认为 false，除非显示指定 */
+  /** 是否自动销毁，默认为 true，当 showClose 为 true 时，默认为 false */
   autoDismiss?: boolean;
 }
 interface NotificationProps extends BaseProps, NoticeProps {
   id?: string;
   activeBackground?: boolean;
   animateState?: string;
-  onRemove?: Function;
+  onRemove: Function;
 }
 
 function Notification(props: NotificationProps) {
   const {
     id,
-    onRemove,
     type,
     title,
     content,
     animateState,
     autoDismiss,
-    showDuration,
+    duration,
     showClose,
     children,
+    onRemove,
     clsPrefix,
     ...rest
   } = props;
   const timer = useRef(-1);
   useEffect(() => {
-    if (showDuration && animateState === 'entered') {
+    if (autoDismiss && animateState === 'entered') {
       timer.current = window.setTimeout(() => {
-        onRemove && onRemove(id);
-      }, showDuration);
+        onRemove(id);
+      }, duration);
     }
-  }, [animateState]);
+  }, [animateState, autoDismiss]);
   useEffect(() => {
     return () => {
-      onRemove && onRemove(id);
+      handleClose();
     };
   }, []);
   const handleClose = () => {
     clearTimeout(timer.current);
-    onRemove && onRemove(id);
+    onRemove(id);
   };
   const cmpCls = `${clsPrefix}-Notification`;
   return (
@@ -75,7 +75,7 @@ Notification.propTypes = {
   type: PropTypes.oneOf(types),
   showClose: PropTypes.bool,
   autoDismiss: PropTypes.bool,
-  showDuration: PropTypes.number,
+  duration: PropTypes.number,
   title: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
@@ -84,6 +84,8 @@ Notification.defaultProps = {
   ...baseDefaultProps,
   type: 'info',
   showClose: false,
+  autoDismiss: true,
+  onRemove: NOOP,
 };
 
 export default Notification;

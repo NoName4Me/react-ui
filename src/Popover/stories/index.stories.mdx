@@ -1,0 +1,34 @@
+import Popover, { StaticPopover } from '../index';
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="Doc|Popover" component={Popover} />
+
+# Popover
+
+提供基础的组件。
+
+## 基础示例
+
+一个基础的示例：
+
+<Preview>
+  <Story id="story-popover--base" />
+</Preview>
+
+## 指定 trigger 的方式
+
+可以使用 `StaticPopover` 组件，通过自己指定触发 pop 的元素 `trigger` 来复用 Popover。
+
+<Preview>
+  <Story id="story-popover--trigger" />
+</Preview>
+
+## 控制滚动禁用/跟随
+
+<Preview>
+  <Story id="story-popover--scroll" />
+</Preview>
+
+## API
+
+<Props components={{ Popover: Popover, StaticPopover }} />

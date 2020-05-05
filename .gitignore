@@ -3,3 +3,4 @@ dist
 ref
 yarn-error.log
 storybook-static
+.DS_Store

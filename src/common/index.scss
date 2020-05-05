@@ -7,31 +7,36 @@ $Fs-3: 14px;
 $Fs-4: 12px;
 $Fs-5: 10px;
 
+$fontSize-big: 16px;
+$fontSize-normal: 14px;
+$fontSize-small: 12px;
+
 @mixin headLevel($lv: 2) {
   font-size: $Fs-2;
   font-weight: bold;
 }
 
 // color
-$primaryColor: hsl(210, 90%, 50%);
+$primaryColor: rgb(2, 248, 255);
 $primaryTextColor: hsl(210, 90%, 20%);
 $primaryBgColor: hsl(210, 90%, 95%);
 $primaryColorLight: hsl(210, 90%, 60%);
-$warnColor: hsl(40, 100%, 50%);
+$warnColor: rgb(255, 195, 0);
 $warnTextColor: hsl(40, 100%, 20%);
 $warnBgColor: hsl(40, 100%, 95%);
-$errorColor: hsl(0, 90%, 50%);
+$errorColor: rgb(242, 91, 101);
 $errorTextColor: hsl(0, 100%, 20%);
 $errorBgColor: hsl(0, 90%, 95%);
-$successColor: hsl(120, 70%, 50%);
+$successColor: rgb(13, 226, 178);
 $successTextColor: hsl(120, 100%, 20%);
 $successBgColor: hsl(120, 70%, 95%);
 $hintColor: hsl(220, 1%, 60%);
 $hintBgColor: hsl(220, 1%, 95%);
 $borderColor: hsl(240, 25%, 90%);
 $hoverBorderColor: hsl(220, 80%, 80%);
-$textColor: hsl(220, 0%, 30%);
+$textColor: #FFFFFF;
 $antiTextColor: hsl(220, 100%, 100%);
+$backgroundColor: #05122D;
 
 // transition
 @mixin transition($what: all, $time: 0.2s, $func: ease-in-out) {
@@ -43,19 +48,31 @@ $antiTextColor: hsl(220, 100%, 100%);
   background-color: unset;
 }
 
-@mixin topBoxShadow($c: rgba($hintColor, .4)) {
+@mixin topBoxShadow($c: rgba($hintColor, 0.4)) {
   box-shadow: 0px 3px 8px $c;
 }
+@mixin dialogShadow($c: rgba($hintColor, 0.4)) {
+  box-shadow: 0px 4px 16px $c;
+}
+
+// flex
+// @mixin flexVerticalCenter {
+//   display: flex;
+//   align-items: center;
+// }
 
 // z-index
 $notifyZIndex: 1000;
+$dialogZIndex: 500;
 
 html {
   color: $textColor;
   font-size: $Fs-4;
+  font-family: "ZCOOL XiaoWei", serif;
 }
 
 * {
+  font-family: "ZCOOL XiaoWei", serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

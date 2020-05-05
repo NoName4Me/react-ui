@@ -1,0 +1,7 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Select;
+
+.#{$prefix} {
+  position: relative;
+}

@@ -1,0 +1,73 @@
+@import '../common/index.scss';
+
+$prefix: #{$defaultPrefix}-Tooltip;
+
+.#{$prefix} {
+  position: fixed;
+  font-size: 12px;
+  line-height: 1.4;
+  color: $antiTextColor;
+  background-color: $textColor;
+  padding: 5px 10px;
+  top: 10px;
+  &__Content {
+    max-width: 300px;
+    // word-break: break-all;
+  }
+  &__Arrow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: $textColor;
+    transform-origin: center;
+    transform: rotate(45deg);
+    $startEnd: 8px;
+    $shift: -4px;
+    &--top-start,
+    &--top,
+    &--top-end {
+      bottom: $shift;
+    }
+    &--bottom-start,
+    &--bottom,
+    &--bottom-end {
+      top: $shift;
+    }
+    &--left-start,
+    &--left,
+    &--left-end {
+      right: $shift;
+    }
+    &--right-start,
+    &--right,
+    &--right-end {
+      left: $shift;
+    }
+    &--top-start,
+    &--bottom-start {
+      left: $startEnd;
+    }
+    &--top-end,
+    &--bottom-end {
+      right: $startEnd;
+    }
+    &--left-start,
+    &--right-start {
+      top: $startEnd;
+    }
+    &--left-end,
+    &--right-end {
+      bottom: $startEnd;
+    }
+    &--top,
+    &--bottom {
+      left: 50%;
+      transform: translate(-50%, 0) rotate(45deg);
+    }
+    &--left,
+    &--right {
+      top: 50%;
+      transform: translate(0, -50%) rotate(45deg);
+    }
+  }
+}

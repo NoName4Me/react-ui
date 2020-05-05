@@ -7,15 +7,25 @@ import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
 
 提供基础的通知组件。
 
-## 基础示例
+## 通知类型
 
-一个基础的示例：
+一共有 `'error', 'warn', 'success', 'info', 'plain', 'hint'` 六种类型的通知组件：
 
 <Preview>
   <Story id="story-notification--base" />
 </Preview>
 
-## 通过 API 调用
+## 使用方式
+
+```js
+import { NotificationManager } from 'paper-react-ui';
+
+NotificationManager.warn('Warn title');
+NotificationManager.warn({
+  title: 'Warn title',
+  content: 'you just triggered a danger action',
+});
+```
 
 <Preview>
   <Story id="story-notification--api" />
@@ -23,4 +33,4 @@ import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
 
 ## API
 
-<Props components={{ Notification: Notification }} />
+<Props of={Notification} />
