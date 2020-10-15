@@ -25,6 +25,9 @@ jobs:
           TARGET_FOLDER: solutions/cybereact/
 
       - name: Publish Github pacakges 🎉
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@noname4me'
         run: CI=false yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
