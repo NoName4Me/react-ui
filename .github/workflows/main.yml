@@ -25,6 +25,7 @@ jobs:
           TARGET_FOLDER: solutions/cybereact/
 
       - name: Publish Github pacakges 🎉
+        uses: actions/setup-node@v1
         with:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@noname4me'
