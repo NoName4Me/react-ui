@@ -1,0 +1,28 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@3.6.2
+
+      - name: Install and Build 🔧
+        run: |
+          yarn
+          CI=false yarn build-storybook
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          REPOSITORY_NAME: NoName4Me/noname4me.github.io
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: storybook-static # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+          TARGET_FOLDER: solutions/cybereact/
+
+      - name: Publish Github pacakges 🎉
+        run: CI=false yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
