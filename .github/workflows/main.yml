@@ -25,6 +25,10 @@ jobs:
           TARGET_FOLDER: solutions/cybereact/
 
       - name: Publish Github pacakges 🎉
-        run: CI=false npm publish
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: CI=false npm run release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
