@@ -24,11 +24,20 @@ jobs:
           CLEAN: true # Automatically remove deleted files from the deploy branch
           TARGET_FOLDER: solutions/cybereact/
 
-      - name: Publish Github pacakges 🎉
+      # github pacakge is shit
+      # - name: Publish Github pacakges 🎉
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '12.x'
+      #     registry-url: 'https://npm.pkg.github.com'
+      # - run: CI=false npm run release
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish npm pacakges 🎉
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
       - run: CI=false npm run release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
