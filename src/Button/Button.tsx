@@ -6,13 +6,17 @@ import clsx from 'clsx';
 import './index.scss';
 import { bem } from '../utils';
 
-interface ButtonProps extends BaseProps {
+export interface ButtonProps extends BaseProps {
+  /** 是否禁用 */
+  disabled?: boolean;
+  /** 大小 */
   size?: 'normal' | 'big' | 'small';
+  /** 类型 */
   type?: 'fill' | 'text' | 'frame';
+  /** 点击事件 */
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
   onMouseLeave?: (event: MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -36,13 +40,9 @@ const Button: FC<ButtonProps> = (props) => {
 
 Button.propTypes = {
   ...basePropsType,
-  /** 大小 */
   size: PropTypes.oneOf(['normal', 'big', 'small']),
-  /** 类型 */
   type: PropTypes.oneOf(['fill', 'text', 'frame']),
-  /** 点击事件 */
   onClick: PropTypes.func,
-  /** 是否禁用 */
   disabled: PropTypes.bool,
 };
 

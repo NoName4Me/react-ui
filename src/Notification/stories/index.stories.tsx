@@ -4,7 +4,7 @@ import { NotificationType } from '../Notification';
 import Button from '../../Button';
 
 export default {
-  title: 'Story|Notification',
+  title: 'Story/Notification',
 };
 
 export const base = () => {

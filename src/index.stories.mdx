@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Logo from '../.storybook/assets/images/cybereact.svg';
+
+<Meta title="Doc/Introduction" />
+
+<style>{`
+  .Header {
+    text-align: center;
+    margin: 10px auto;
+    width: 200px;
+  }
+
+  .Header__Logo {
+    width: 100px;
+    height: 100px;
+    transform: rotate(0deg);
+    transition: 1s ease;
+  }
+  .Header:hover .Header__Logo {
+    transform: rotate(360deg);
+  }
+  .Header:hover .Header__Title:after {
+    transform: translateX(0);
+  }
+  .Header__Title {
+    position: relative;
+    font-size: 32px;
+    color: #02F8FF;
+    overflow: hidden;
+  }
+  .Header__Title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: .5s ease-out;
+    background: linear-gradient(to left, #02F8FF, #02F8FF 4px, #02F8FF8F 4px, #02F8FF8F 8px,#02F8FF4F 8px, transparent 100%);
+  }
+  .Header__Desc {
+    font-size: 16px;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes swap {
+    from {
+      background-position: 200px;
+    }
+    to {
+      background-position: 0;
+    }
+  }
+`}</style>
+
+<header class="Header">
+  <img class="Header__Logo" src={Logo} alt="plugin" />
+  <h1 class="Header__Title">Cybereact</h1>
+  <p class="Header__Desc">The Cyberpunk React UI.</p>
+</header>
+
+# Cybereact

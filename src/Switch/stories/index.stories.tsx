@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Switch from '../index';
 
 export default {
-  title: 'Story|Switch',
+  title: 'Story/Switch',
 };
 
 export const base = () => {

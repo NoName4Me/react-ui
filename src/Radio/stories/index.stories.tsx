@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import RadioGroup, { Radio } from '..';
 
 export default {
-  title: 'Story|Radio',
+  title: 'Story/Radio',
 };
 
 export const base = () => {

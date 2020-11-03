@@ -3,7 +3,7 @@ import Modal from '../index';
 import Button from '../../Button';
 
 export default {
-  title: 'Story|Modal',
+  title: 'Story/Modal',
 };
 
 export const base = () => {

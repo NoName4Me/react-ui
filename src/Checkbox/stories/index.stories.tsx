@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CheckboxGroup, { Checkbox } from '../index';
 
 export default {
-  title: 'Story|Checkbox',
+  title: 'Story/Checkbox',
 };
 
 export const base = () => {

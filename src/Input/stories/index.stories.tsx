@@ -3,7 +3,7 @@ import Input from '../index';
 import Icon from '../../Icon';
 
 export default {
-  title: 'Story|Input',
+  title: 'Story/Input',
 };
 
 export const base = () => {

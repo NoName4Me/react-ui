@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '..';
 
 export default {
-  title: 'Story|Icon',
+  title: 'Story/Icon',
 };
 
 const LabelBox = ({ type, children }: any) => {

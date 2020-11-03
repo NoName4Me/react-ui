@@ -26,9 +26,9 @@ export default create({
   barBg: '#02F8FF22',
 
   // Form colors
-  inputBg: 'red',
+  inputBg: '#05122D',
   inputBorder: 'yellow',
-  inputTextColor: 'black',
+  inputTextColor: '#E8E9EA',
   inputBorderRadius: 4,
 
   brandTitle: 'Cyber React UI',

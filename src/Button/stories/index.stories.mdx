@@ -1,10 +1,10 @@
-import Button from '..';
+import Button, {ButtonProps} from '..';
 import Icon from '../../Icon';
 import Modal from '../../Modal';
 
-import { Meta, Story, Preview, Props, Stories } from '@storybook/addon-docs/blocks';
+import { Meta, Story, ArgsTable, Props, Stories, Preview } from '@storybook/addon-docs/blocks';
 
-<Meta title="Doc|Button" component={Button} />
+<Meta title="Doc/Button" component={Button}/>
 
 # Button
 
@@ -13,6 +13,8 @@ import { Meta, Story, Preview, Props, Stories } from '@storybook/addon-docs/bloc
 ## 大小
 
 可以通过 `size` 来控制 `Button` 大小，`type` 指定不同的风格：
+
+export const Template = (args, {argTypes}) => <Button {...args} onClick={() => {}} props={argTypes}/>
 
 <Preview>
   <Story id="story-button--base" />
@@ -36,4 +38,12 @@ import { Meta, Story, Preview, Props, Stories } from '@storybook/addon-docs/bloc
 
 ## API
 
-<Props of={Button} />
+<Story name="Controls" args={{ 
+    size: 'normal',
+    type: 'fill',
+    children: '一个按钮'
+  }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Controls"/>

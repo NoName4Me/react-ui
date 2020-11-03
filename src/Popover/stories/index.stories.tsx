@@ -6,7 +6,7 @@ import { default as MuiPopover } from '@material-ui/core/Popover';
 
 
 export default {
-  title: 'Story|Popover',
+  title: 'Story/Popover',
 };
 
 export const base = () => {

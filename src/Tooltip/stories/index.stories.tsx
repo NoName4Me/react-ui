@@ -4,7 +4,7 @@ import Button from '../../Button';
 import { Placement } from '../Tooltip';
 
 export default {
-  title: 'Story|Tooltip',
+  title: 'Story/Tooltip',
 };
 
 const content = 'Tooltip~';

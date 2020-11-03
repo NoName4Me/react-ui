@@ -2,7 +2,7 @@ import React from 'react';
 import TEMPLATE from '../index';
 
 export default {
-  title: 'Story|TEMPLATE',
+  title: 'Story/TEMPLATE',
 };
 
 export const base = () => {

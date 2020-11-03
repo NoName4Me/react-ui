@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import Button from '..';
 import Icon from '../../Icon';
 
 export default {
-  title: 'Story|Button',
+  title: 'Story/Button',
 };
 
 const Group = ({ children }) => {

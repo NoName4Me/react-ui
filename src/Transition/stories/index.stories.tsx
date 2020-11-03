@@ -3,7 +3,7 @@ import Transition, { Fade, Scale } from '../index';
 import Button from '../../Button';
 
 export default {
-  title: 'Story|Transition',
+  title: 'Story/Transition',
 };
 
 const style = { display: 'inline-block', padding: '4px', backgroundColor: 'pink' };
