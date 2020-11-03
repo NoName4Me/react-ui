@@ -1,6 +1,6 @@
 {
   "name": "cybereact",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "repository": "git@github.com:NoName4Me/react-ui.git",
   "author": "NoName4Me <anich.evas@gmail.com>",
@@ -13,8 +13,8 @@
     "release": "npm publish dist",
     "prerelease": "yarn build && sh scripts/build/prepare-release-files.sh",
     "build": "yarn build:cjs && yarn build:esm && yarn build:umd && yarn gen-dts:cjs && yarn gen-dts:esm",
-    "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ./babel.config.js ./src --extensions '.ts' --out-dir ./dist --ignore \"**/stories/*\"",
-    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ./babel.config.js ./src --extensions '.ts' --out-dir ./dist/esm --ignore \"**/*.test.js\"",
+    "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ./babel.config.js ./src --extensions .tsx,.ts --out-dir ./dist --ignore \"**/stories/*,**/__test__/*\"",
+    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ./babel.config.js ./src --extensions .tsx,.ts --out-dir ./dist/esm --ignore \"**/stories/*,**/__test__/*\"",
     "build:umd": "cross-env NODE_ENV=production BABEL_ENV=umd rollup -c scripts/build/rollup.config.js",
     "gen-dts:cjs": "tsc --declaration --outDir dist/ --emitDeclarationOnly --noEmit false",
     "gen-dts:esm": "tsc --declaration --outDir dist/esm --emitDeclarationOnly --noEmit false",
