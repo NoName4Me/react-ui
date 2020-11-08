@@ -16,7 +16,7 @@ const defaultPlugins = [
     extensions,
   }),
   commonjs(),
-  sass(),
+  sass({output: 'dist/umd/index.css'}),
   babel({
     runtimeHelpers: true,
     exclude: /node_modules/,
@@ -24,19 +24,20 @@ const defaultPlugins = [
     extensions,
   }),
 ];
+
 export default {
   external: [...reactRelatedPkgs],
   input: 'src/index.ts',
   plugins: defaultPlugins,
   output: [
     {
-      file: 'dist/umd/paper-react-ui.development.js',
+      file: 'dist/umd/cybereact.js',
       format: 'umd',
       name: 'PaperReactUI',
       globals,
     },
     {
-      file: 'dist/umd/paper-react-ui.min.js',
+      file: 'dist/umd/cybereact.min.js',
       format: 'umd',
       plugins: [terser()],
       name: 'PaperReactUI',
