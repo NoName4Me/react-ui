@@ -1,6 +1,6 @@
 {
   "name": "cybereact",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "main": "index.js",
   "repository": "git@github.com:NoName4Me/react-ui.git",
   "author": "NoName4Me <anich.evas@gmail.com>",

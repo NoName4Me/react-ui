@@ -16,11 +16,11 @@ export const base = () => {
   return (
     <>
       <Group>
-        <Button size="big">大号主要按钮</Button>
-        <Button size="big" type="frame">
+        <Button size="large">大号主要按钮</Button>
+        <Button size="large" type="frame">
           大号次要按钮
         </Button>
-        <Button size="big" type="text">
+        <Button size="large" type="text">
           大号文字按钮
         </Button>
       </Group>

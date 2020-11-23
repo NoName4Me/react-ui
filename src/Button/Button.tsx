@@ -10,7 +10,7 @@ export interface ButtonProps extends BaseProps {
   /** 是否禁用 */
   disabled?: boolean;
   /** 大小 */
-  size?: 'normal' | 'big' | 'small';
+  size?: 'middle' | 'large' | 'small';
   /** 类型 */
   type?: 'fill' | 'text' | 'frame';
   /** 点击事件 */
@@ -40,7 +40,7 @@ const Button: FC<ButtonProps> = (props) => {
 
 Button.propTypes = {
   ...basePropsType,
-  size: PropTypes.oneOf(['normal', 'big', 'small']),
+  size: PropTypes.oneOf(['middle', 'large', 'small']),
   type: PropTypes.oneOf(['fill', 'text', 'frame']),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
@@ -48,7 +48,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   ...baseDefaultProps,
-  size: 'normal',
+  size: 'middle',
   type: 'fill',
 };
 
